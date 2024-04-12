@@ -1,0 +1,44 @@
+.button-game {
+    -fx-background-radius: 10;
+    -fx-background-color: #ffffff;
+
+    -fx-min-width: 100px;
+    -fx-min-height: 100px;
+    
+    -fx-alignment: center;
+    
+    -fx-border-width: 3px;
+    -fx-border-color: red;
+    -fx-border-radius: 10;
+
+    -fx-font-size: 24;
+}
+
+.button-shuffle {
+    -fx-background-color: #48ff00;
+    -fx-background-radius: 10;
+    
+    -fx-min-width: 100px;
+    -fx-min-heigt: 50px;
+    
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10;
+    
+    -fx-aligment: center;
+
+    -fx-font-size: 22;
+}
+
+.button-shuffle:hover {
+    -fx-background-color: #a6ff00;
+}
+
+/* SFONDO*/
+/*
+.window {
+    -fx-background-image: url('orangecar.jpeg');
+    -fx-background-position: center center;
+    -fx-background-size: 500 300;
+}
+*/
