@@ -34,6 +34,7 @@ public class Leaderboard {
 
         for (MyData datalist2 : dataList){
             System.out.println(datalist2);
+            
         }
     }
 
