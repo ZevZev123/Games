@@ -6,16 +6,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SequenceWriter;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class SecondWindow {
@@ -70,12 +66,6 @@ public class SecondWindow {
             mapper.writeValue(file, dataWrite);
             data = mapper.readValue(file, Data.class);
             System.out.println(data.getMoves() + "\t" + data.getTime());
-            /*
-            SequenceWriter seqWriter = mapper.writer().writeValues(file);
-            seqWriter.write(data);
-            seqWriter.close();
-            mapper.writeValue(new File("src\\main\\resources\\puzzle15\\records.json"), data);
-            System.out.println("Dati salvati su dati.json");*/
         } catch (IOException ex) {
             ex.printStackTrace();
         }
