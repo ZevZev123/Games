@@ -6,13 +6,17 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.File;
 import java.io.IOException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecondWindow {
     @FXML
@@ -22,7 +26,7 @@ public class SecondWindow {
 
     private Data numData;
 
-    public void setWindow(int movesDone, long timePassed){
+    public void setWindow(int movesDone, long timePassed) throws StreamReadException, DatabindException, IOException{
         this.numData = new Data();
         numData.setMoves(movesDone);
         numData.setTime(timePassed);
@@ -49,25 +53,19 @@ public class SecondWindow {
     }
 
     @FXML
-    private void saveRecord(){
+    private void saveRecord() throws StreamReadException, DatabindException, IOException{
         File file = new File("src\\main\\resources\\puzzle15\\records.json");
-        Data data;
 
-        Map<String, Object> dataWrite = new HashMap<>();
-        dataWrite.put("moves", numData.getMoves());
-        dataWrite.put("time", numData.getTime());
-        dataWrite.put("moves", numData.getMoves());
-        dataWrite.put("time", numData.getTime());
+        ObjectMapper mapper = new ObjectMapper();
 
-        System.out.println(dataWrite);
+        List<Data> dataList2 = mapper.readValue(file, new TypeReference<List<Data>>() {});
+        dataList2.add(numData);
 
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(file, dataWrite);
-            data = mapper.readValue(file, Data.class);
-            System.out.println(data.getMoves() + "\t" + data.getTime());
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            mapper.writeValue(file, dataList2);
+            System.out.println("SALVATAGGIO ESEGUITO");
+        } catch (IOException e) {
+            System.err.println("ERRORE NEL SALVATAGGIO: " + e);
         }
     }
 }
