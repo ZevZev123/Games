@@ -41,7 +41,6 @@ public class SecondWindow {
         gridpane.add(lab, 1, 1);
 
         addRecord();
-        System.out.println("Elementi salvati in json!");
     }
 
     @FXML
@@ -55,11 +54,18 @@ public class SecondWindow {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        List<Data> dataList2 = mapper.readValue(file, new TypeReference<List<Data>>() {});
-        dataList2.add(numData);
+        List<Data> dataList = mapper.readValue(file, new TypeReference<List<Data>>() {});
+        dataList.add(numData);
 
+        /*
+        System.out.println("\nSTAMPA TOTALE DEL FILE records.json:");
+        for (Data datalist2 : dataList){
+            System.out.println(datalist2);
+        }
+        */
+        
         try {
-            mapper.writeValue(file, dataList2);
+            mapper.writeValue(file, dataList);
             System.out.println("SALVATAGGIO ESEGUITO");
         } catch (IOException e) {
             System.err.println("ERRORE NEL SALVATAGGIO: " + e);
