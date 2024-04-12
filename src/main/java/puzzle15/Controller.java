@@ -40,11 +40,28 @@ public class Controller {
                 
                 button.setOnAction(event -> move(event));
                 
+                button.setDisable(true);
                 matrix[row][col] = button;
                 matrice.add(button, col, row);
             }
         }
         colorUpdate();
+    }
+
+    private void blockButtons(){
+        for (Button[] list1 : matrix){
+            for (Button button : list1){
+                button.setDisable(true);
+            }
+        }
+    }
+
+    private void unblockButtons(){
+        for (Button[] list1 : matrix){
+            for (Button button : list1){
+                button.setDisable(false);
+            }
+        }
     }
 
     private void move(ActionEvent event){
@@ -149,6 +166,7 @@ public class Controller {
                 }       
             }
         }
+        blockButtons();
         end = System.currentTimeMillis();
         openSecondWindow();
         moves.setMoves(0);
@@ -158,8 +176,8 @@ public class Controller {
 
     @FXML
     private void shuffle(){
+        unblockButtons();
         start = System.currentTimeMillis();
-        System.out.println("SHUFFLE");
         int num;
 
         for (int i = 0; i < 500; i++){
