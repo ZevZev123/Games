@@ -4,10 +4,10 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane fx:id="borderpane" prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="puzzle15.Controller" onKeyReleased="#arrowPressed" styleClass="window">
-   <center>
-      <GridPane fx:id="matrice" alignment="center" hgap="5" vgap="5">
-         <!--<ListView fx:id="labelListView"/>-->
-         <!--
+    <center>
+        <GridPane fx:id="matrice" alignment="center" hgap="5" vgap="5">
+            <!--<ListView fx:id="labelListView"/>-->
+            <!--
             <Label fx:id="lab1" onMousePressed="#move" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             <Label fx:id="lab2" onMousePressed="#move" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
             <Label fx:id="lab3" onMousePressed="#move" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
@@ -27,11 +27,14 @@
             <Label fx:id="lab14" onMousePressed="#move" text="14" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
             <Label fx:id="lab15" onMousePressed="#move" text="15" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
             <Label fx:id="lab16" onMousePressed="#move" text="" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-         -->
-         <Button styleClass="button-shuffle" text="Shuffle" onAction="#shuffle" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      </GridPane>
-   </center>
+            <Button styleClass="button-leaderboard" text="Leaderboard" onAction="#showLeader" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            -->
 
-   <!--<bottom>
-   </bottom>-->
+            <Button styleClass="button-leaderboard" text="Leaderboard" onAction="#showLeaderboard" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"/>
+            <Button styleClass="button-shuffle" text="Shuffle" onAction="#shuffle" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.columnSpan="2"/>
+        </GridPane>
+    </center>
+
+    <!--<bottom>
+    </bottom>-->
 </BorderPane>

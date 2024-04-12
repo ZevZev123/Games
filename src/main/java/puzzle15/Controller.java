@@ -22,7 +22,7 @@ public class Controller {
 
     private Button[][] matrix = new Button[4][4];
     private Random rand = new Random();
-    private Data moves = new Data();
+    private MyData moves = new MyData();
     private long start = System.currentTimeMillis();
     private long end = 0;
 
@@ -273,27 +273,49 @@ public class Controller {
 
     @FXML
     public void arrowPressed(KeyEvent key){
-        switch (key.getCode()) {
-            case UP:
-                moveUp();
-                break;
-            case DOWN:
-                moveDown();
-                break;
-            case LEFT:
-                moveLeft();
-                break;
-            case RIGHT:
-                moveRight();
-                break;
-            case ENTER:
-                shuffle();
-        
-            default:
-                break;
+        if (!matrix[0][0].isDisable()){
+            switch (key.getCode()) {
+                case UP:
+                    moveUp();
+                    break;
+                case DOWN:
+                    moveDown();
+                    break;
+                case LEFT:
+                    moveLeft();
+                    break;
+                case RIGHT:
+                    moveRight();
+                    break;
+                case ENTER:
+                    shuffle();
+            
+                default:
+                    break;
+            }
+            colorUpdate();
+            checkGame();
         }
-        colorUpdate();
-        checkGame();
+    }
+
+    @FXML
+    private void showLeaderboard(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("structure3.fxml"));
+            Parent root = loader.load();
+            
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("LEADERBOARD");
+            stage.setWidth(350);
+            stage.setHeight(500);
+
+            Scene scene = root.getScene();
+            scene.getStylesheets().add(getClass().getResource("style2.css").toExternalForm());
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("ERRORE:\n" + e);
+        }
     }
 
     private void openSecondWindow(){
@@ -301,12 +323,12 @@ public class Controller {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("structure2.fxml"));
             Parent root = loader.load();
             
-            SecondWindow controller = loader.getController();
+            WinWindow controller = loader.getController();
             controller.setWindow(moves.getMoves(), (end - start)/1000);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("YOU WON!");
+            stage.setTitle("YOU WON");
             stage.setWidth(350);
             stage.setHeight(200);
 
@@ -314,7 +336,7 @@ public class Controller {
             scene.getStylesheets().add(getClass().getResource("style2.css").toExternalForm());
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("ERRORE:\n" + e);
         }
     }
 

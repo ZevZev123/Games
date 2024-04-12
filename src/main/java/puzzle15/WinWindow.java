@@ -15,17 +15,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
-public class SecondWindow {
+public class WinWindow {
     @FXML
     private Button button;
     @FXML
     private GridPane gridpane;
 
-    private Data numData;
+    private MyData numData;
 
     public void setWindow(int movesDone, long timePassed) throws StreamReadException, DatabindException, IOException{
-        this.numData = new Data();
+        this.numData = new MyData();
         numData.setMoves(movesDone);
         numData.setTime(timePassed);
 
@@ -54,19 +55,20 @@ public class SecondWindow {
         File file = new File("src\\main\\resources\\puzzle15\\records.json");
 
         ObjectMapper mapper = new ObjectMapper();
-        List<Data> dataList = new ArrayList<>();
+        List<MyData> dataList = new ArrayList<>();
 
         try{
-            dataList = mapper.readValue(file, new TypeReference<List<Data>>() {});
+            dataList = mapper.readValue(file, new TypeReference<List<MyData>>() {});
         } catch (IOException e) {
             System.out.println("Il file json era vuoto");
         }
 
         dataList.add(numData);
+        Collections.sort(dataList);
 
         /*
         System.out.println("\nSTAMPA TOTALE DEL FILE records.json:");
-        for (Data datalist2 : dataList){
+        for (MyData datalist2 : dataList){
             System.out.println(datalist2);
         }
         */

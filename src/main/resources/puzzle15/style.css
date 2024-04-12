@@ -18,7 +18,7 @@
     -fx-background-color: #48ff00;
     -fx-background-radius: 10;
     
-    -fx-min-width: 100px;
+    -fx-min-width: 205px;
     -fx-min-heigt: 50px;
     
     -fx-border-color: black;
@@ -27,11 +27,38 @@
     
     -fx-aligment: center;
 
-    -fx-font-size: 22;
+    -fx-font-size: 20;
+    -fx-background-image: url('shuffle.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 40px;
+    -fx-background-position: 10%;
 }
 
 .button-shuffle:hover {
     -fx-background-color: #a6ff00;
+}
+
+.button-leaderboard {
+    -fx-background-color: #ffcc00;
+    -fx-background-radius: 10;
+    
+    -fx-min-width: 205px;
+    -fx-min-heigt: 50px;
+    
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10;
+    
+    -fx-aligment: center;
+
+    -fx-font-size: 20;
+    -fx-background-image: url('crown.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+}
+
+.button-leaderboard:hover {
+    -fx-background-color: #ffe065;
 }
 
 /* SFONDO*/
