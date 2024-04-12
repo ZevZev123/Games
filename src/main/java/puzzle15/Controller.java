@@ -306,7 +306,7 @@ public class Controller {
             
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("LEADERBOARD");
+            stage.setTitle("Leaderboard");
             stage.setWidth(350);
             stage.setHeight(500);
 
@@ -328,7 +328,7 @@ public class Controller {
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("YOU WON");
+            stage.setTitle("You Won");
             stage.setWidth(350);
             stage.setHeight(200);
 

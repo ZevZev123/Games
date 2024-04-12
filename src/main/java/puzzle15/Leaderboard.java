@@ -1,8 +1,10 @@
 package puzzle15;
 
 import javafx.fxml.FXML;
+import javafx.fxml.LoadException;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,6 +21,8 @@ public class Leaderboard {
     @FXML
     private Button button;
 
+    private Label[] matrix = new Label[20];
+
     @FXML
     private void initialize(){
         File file = new File("src\\main\\resources\\puzzle15\\records.json");
@@ -32,9 +36,26 @@ public class Leaderboard {
             System.out.println("Il file json era vuoto");
         }
 
-        for (MyData datalist2 : dataList){
-            System.out.println(datalist2);
+        Label moves = new Label("");
+        Label time = new Label("");
+
+        for (int i = 0; i < 10; i++){
+            // System.out.println(dataList.get(i));
+            moves = new Label();
+            time = new Label();
             
+            moves.styleProperty().set("-fx-alignment:center;");
+            time.styleProperty().set("-fx-alignment:center;");
+
+            moves.setText(String.valueOf(dataList.get(i).getMoves()));
+            time.setText(String.valueOf(dataList.get(i).getTime()));
+
+            matrix[i*2] = moves;
+            matrix[i*2 + 1] = time;
+            gridpane.add(moves, 0, i);
+            gridpane.add(time, 1, i);
+            /*
+            */
         }
     }
 
