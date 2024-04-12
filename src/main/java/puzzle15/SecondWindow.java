@@ -8,14 +8,12 @@ import javafx.stage.Stage;
 
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.File;
 import java.io.IOException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SecondWindow {
@@ -42,7 +40,7 @@ public class SecondWindow {
         lab = new Label(String.valueOf(numData.getTime()) + " sec");
         gridpane.add(lab, 1, 1);
 
-        saveRecord();
+        addRecord();
         System.out.println("Elementi salvati in json!");
     }
 
@@ -52,8 +50,7 @@ public class SecondWindow {
         stage.close();
     }
 
-    @FXML
-    private void saveRecord() throws StreamReadException, DatabindException, IOException{
+    private void addRecord() throws StreamReadException, DatabindException, IOException{
         File file = new File("src\\main\\resources\\puzzle15\\records.json");
 
         ObjectMapper mapper = new ObjectMapper();
