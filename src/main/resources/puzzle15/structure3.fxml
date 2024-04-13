@@ -11,9 +11,11 @@
         </GridPane>
     </top>
     <center>
-        <GridPane fx:id="gridpane" alignment="center" hgap="5" vgap="5">
+        <!-- <ScrollPane style="-fx-border-color:black;"> -->
+        <GridPane fx:id="gridpane" BorderPane.alignment="center" hgap="5" vgap="5">
             <!-- LISTA RECORDS -->
         </GridPane>
+        <!-- </ScrollPane> -->
     </center>
     <bottom>
         <VBox alignment="center" style="-fx-padding: 10 0 10 0;">

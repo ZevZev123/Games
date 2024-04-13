@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
+import javafx.scene.image.Image;
 
 import java.util.Random;
 
@@ -310,6 +311,7 @@ public class Controller {
             stage.setWidth(350);
             stage.setHeight(500);
 
+            stage.getIcons().add(new Image("file:src\\main\\resources\\puzzle15\\crown.png"));
             Scene scene = root.getScene();
             scene.getStylesheets().add(getClass().getResource("style2.css").toExternalForm());
             stage.show();
@@ -331,7 +333,8 @@ public class Controller {
             stage.setTitle("You Won");
             stage.setWidth(350);
             stage.setHeight(200);
-
+            
+            stage.getIcons().add(new Image("file:src\\main\\resources\\puzzle15\\logo.png"));
             Scene scene = root.getScene();
             scene.getStylesheets().add(getClass().getResource("style2.css").toExternalForm());
             stage.show();

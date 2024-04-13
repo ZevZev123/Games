@@ -1,7 +1,6 @@
 package puzzle15;
 
 import javafx.fxml.FXML;
-import javafx.fxml.LoadException;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
