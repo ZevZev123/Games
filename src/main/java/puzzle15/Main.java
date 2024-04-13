@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/puzzle15/structure.fxml"));
         primaryStage.setTitle("15 Puzzle");
-        primaryStage.getIcons().add(new Image("file:src\\main\\resources\\puzzle15\\logo.png"));
+        primaryStage.getIcons().add(new Image("file:src\\main\\resources\\images\\15puzzle.png"));
         Scene scene = new Scene(root, 500, 500);
         scene.getStylesheets().add(getClass().getResource("/puzzle15/style.css").toExternalForm());
         primaryStage.setScene(scene);

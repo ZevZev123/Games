@@ -12,7 +12,7 @@
     </top>
     <center>
         <!-- <ScrollPane style="-fx-border-color:black;"> -->
-        <GridPane fx:id="gridpane" BorderPane.alignment="center" hgap="5" vgap="5">
+        <GridPane style="-fx-border-color: black;" fx:id="gridpane" alignment="center" hgap="5" vgap="5">
             <!-- LISTA RECORDS -->
         </GridPane>
         <!-- </ScrollPane> -->

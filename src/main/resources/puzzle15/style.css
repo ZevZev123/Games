@@ -28,7 +28,7 @@
     -fx-aligment: center;
 
     -fx-font-size: 20;
-    -fx-background-image: url('shuffle.png');
+    -fx-background-image: url('../images/shuffle.png');
     -fx-background-repeat: no-repeat;
     -fx-background-size: 40px;
     -fx-background-position: 10%;
@@ -52,7 +52,7 @@
     -fx-aligment: center;
 
     -fx-font-size: 20;
-    -fx-background-image: url('crown.png');
+    -fx-background-image: url('../images/crown.png');
     -fx-background-repeat: no-repeat;
     -fx-background-size: 50px;
 }
