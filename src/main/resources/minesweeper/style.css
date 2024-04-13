@@ -4,3 +4,7 @@
 
     -fx-background-color: #aeaeae;
 }
+
+.button-game:hover {
+    -fx-background-color: #747474;
+}

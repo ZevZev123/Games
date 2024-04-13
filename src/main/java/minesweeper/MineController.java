@@ -4,21 +4,25 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
-public class Controller {
+public class MineController {
     @FXML
-    public GridPane mines;
+    private GridPane mines;
 
     @FXML
-    public void initialize(){
+    private void initialize(){
         Button button;
-        // 30 x 30
-        for (int row = 0; row < 10; row++){
-            for (int col = 0; col < 10; col++){
+        for (int row = 0; row < 20; row++){
+            for (int col = 0; col < 20; col++){
                 button = new Button();
                 button.getStyleClass().setAll("button-game");
 
                mines.add(button, row, col);
             }
         }
+    }
+
+    @FXML
+    private void restartGame(){
+        System.out.println("CIAO");
     }
 }
