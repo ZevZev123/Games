@@ -6,8 +6,8 @@
 <BorderPane prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="puzzle15.WinWindow">
    <center>
       <GridPane fx:id="gridpane" alignment="center" hgap="5" vgap="5">
-         <Label text="Numero mosse" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-         <Label text="Tempo totale" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+         <Label text="Moves" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+         <Label text="Total time" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
          <Button fx:id="button" styleClass="okbutton" text="Ok" onAction="#test" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
       </GridPane>
    </center>

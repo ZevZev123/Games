@@ -6,9 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.File;
@@ -25,7 +23,7 @@ public class WinWindow {
 
     private MyData numData;
 
-    public void setWindow(int movesDone, long timePassed) throws StreamReadException, DatabindException, IOException{
+    public void setWindow(int movesDone, long timePassed){
         this.numData = new MyData();
         numData.setMoves(movesDone);
         numData.setTime(timePassed);
@@ -35,7 +33,7 @@ public class WinWindow {
             lab = new Label(String.valueOf(numData.getMoves()));
             gridpane.add(lab, 1, 0);
         } else {
-            System.out.println("moves è nullo");
+            System.out.println("moves is null");
         }
         
         lab = new Label(String.valueOf(numData.getTime()) + " sec");
@@ -60,7 +58,7 @@ public class WinWindow {
         try{
             dataList = mapper.readValue(file, new TypeReference<List<MyData>>() {});
         } catch (IOException e) {
-            System.out.println("Il file json era vuoto");
+            System.out.println("json file empty");
         }
 
         dataList.add(numData);
@@ -78,9 +76,9 @@ public class WinWindow {
 
         try {
             mapper.writeValue(file, dataList);
-            System.out.println("SALVATAGGIO ESEGUITO");
+            System.out.println("Saved");
         } catch (IOException e) {
-            System.err.println("ERRORE NEL SALVATAGGIO: \n" + e);
+            System.err.println("Error: \n" + e);
         }
     }
 }

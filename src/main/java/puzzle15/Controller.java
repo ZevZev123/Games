@@ -169,7 +169,7 @@ public class Controller {
         }
         blockButtons();
         end = System.currentTimeMillis();
-        openSecondWindow();
+        showWinWindow();
         moves.setMoves(0);
         start = System.currentTimeMillis();
         return true;
@@ -320,7 +320,8 @@ public class Controller {
         }
     }
 
-    private void openSecondWindow(){
+
+    private void showWinWindow(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("structure2.fxml"));
             Parent root = loader.load();
