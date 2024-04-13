@@ -3,4 +3,5 @@
 * minesweeper
 * space invaders
 * tetris
+* snake
 */

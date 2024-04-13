@@ -7,4 +7,7 @@ module games {
 
     opens puzzle15 to javafx.fxml;
     exports puzzle15;
+
+    opens minesweeper to java.fxml;
+    exports minesweeper;
 }

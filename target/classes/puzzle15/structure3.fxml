@@ -13,7 +13,7 @@
     <center>
         <!-- <ScrollPane style="-fx-border-color:black;"> -->
         <GridPane style="-fx-border-color: black;" fx:id="gridpane" alignment="center" hgap="5" vgap="5">
-            <!-- LISTA RECORDS -->
+            <!-- RECORDS LIST -->
         </GridPane>
         <!-- </ScrollPane> -->
     </center>

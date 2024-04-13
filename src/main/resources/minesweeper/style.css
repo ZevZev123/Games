@@ -1,0 +1,6 @@
+.button-game {
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
+
+    -fx-background-color: #aeaeae;
+}
