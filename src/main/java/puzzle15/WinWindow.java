@@ -65,6 +65,9 @@ public class WinWindow {
 
         dataList.add(numData);
         Collections.sort(dataList);
+        
+        // ELIMINAZIONE DI TUTTI I MyData TRANNE I PRIMI 10 //
+        // dataList.subList(10, dataList.size()).clear();
 
         /*
         System.out.println("\nSTAMPA TOTALE DEL FILE records.json:");
