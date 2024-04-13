@@ -1,10 +1,19 @@
 .button-game {
-    -fx-min-width: 20px;
-    -fx-min-height: 20px;
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+
+    -fx-border-color: rgb(65, 65, 65);
+    -fx-border-size: 1px;
 
     -fx-background-color: #aeaeae;
 }
-
 .button-game:hover {
     -fx-background-color: #747474;
+}
+
+
+.bomb {
+    -fx-background-image: url("../images/bomb.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 25px;
 }
