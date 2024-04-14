@@ -73,7 +73,6 @@ public class MineController {
         }
     }
     
-
     private void open(int[] position){
         System.out.println("OPEN");
         Button button = matrix[position[0]][position[1]];
@@ -81,10 +80,13 @@ public class MineController {
         if (!button.getStyleClass().contains(button.getText())){
             button.getStyleClass().addAll(button.getText());
         }
-
-        for (int col = (position[0]-1); col < (position[0]+2); col++){
-            for (int row = (position[1]-1); row < (position[1]+2); row++){
-                if ((col >= 0 && row >= 0) && (col < maxCol && row < maxRow)){
+        
+        if (button.getStyleClass().contains("")){
+            for (int col = (position[0]-1); col < (position[0]+2); col++){
+                for (int row = (position[1]-1); row < (position[1]+2); row++){
+                    if ((col >= 0 && row >= 0) && (col < maxCol && row < maxRow)){
+                        open(new int[] {col, row});
+                    }
                     
                 }
             }
@@ -118,13 +120,11 @@ public class MineController {
         for (int col = 0; col < maxCol; col++){
             for (int row = 0; row < maxRow; row++){
                 if (matrix[col][row].equals(button)){
-                    int[] position = {col, row};
-                    return position;
+                    return new int[] {col, row};
                 }
             }
         }
-        int[] position = {0,0};
-        return position;
+        return new int[] {0,0};
     }
 
     private void generate(int[] position){
