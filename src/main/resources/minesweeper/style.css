@@ -1,9 +1,13 @@
 .button-game {
     -fx-min-width: 25px;
     -fx-min-height: 25px;
+    -fx-max-width: 25px;
+    -fx-max-height: 25px;
 
     -fx-border-color: rgb(65, 65, 65);
     -fx-border-size: 1px;
+
+    -fx-text-fill: white;
 
     -fx-background-color: #aeaeae;
 }
