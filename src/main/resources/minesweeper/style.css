@@ -7,7 +7,7 @@
     -fx-border-color: rgb(65, 65, 65);
     -fx-border-size: 1px;
 
-    -fx-text-fill: white;
+    -fx-text-fill: transparent;
 
     -fx-background-color: #aeaeae;
 }
@@ -15,6 +15,9 @@
     -fx-background-color: #747474;
 }
 
+.button-unlocked {
+    -fx-background-color: rgb(65, 65, 65);
+}
 
 .bomb {
     -fx-background-image: url("../images/bomb.png");

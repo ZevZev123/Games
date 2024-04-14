@@ -63,13 +63,48 @@ public class MineController {
             generate(position);
             isGenerated = true;
         }
-        if(matrix[position[0]][position[1]].getText() == "bomb"){
+        if (matrix[position[0]][position[1]].getText() == "bomb"){
+            matrix[position[0]][position[1]].setStyle("-fx-background-color:red;");
+            showBombs();
             disableButtons();
             System.out.println("Game Over");
+        } else {
+            open(position);
         }
-        
     }
     
+
+    private void open(int[] position){
+        System.out.println("OPEN");
+        Button button = matrix[position[0]][position[1]];
+        
+        if (!button.getStyleClass().contains(button.getText())){
+            button.getStyleClass().addAll(button.getText());
+        }
+
+        for (int col = (position[0]-1); col < (position[0]+2); col++){
+            for (int row = (position[1]-1); row < (position[1]+2); row++){
+                if ((col >= 0 && row >= 0) && (col < maxCol && row < maxRow)){
+                    
+                }
+            }
+        }
+
+        
+        System.out.println(button.getStyleClass().size());
+        
+    }
+
+    private void showBombs(){
+        for (Button[] list1 : matrix){
+            for (Button button : list1){
+                if (button.getText() == "bomb"){
+                    button.getStyleClass().addAll("bomb");
+                }
+            }
+        }
+    }
+
     private void flag(ActionEvent event){
         int[] position = getPosition((Button) event.getSource());
         if (matrix[position[0]][position[1]].getStyleClass().contains("mine")){
@@ -174,6 +209,7 @@ public class MineController {
         for (Button[] list: matrix){
             for (Button button: list){
                 button.getStyleClass().setAll("button-game");
+                button.setStyle("-fx-background-color: #aeaeae;");
                 button.setText("");
                 button.setDisable(false);
                 isGenerated = false;
