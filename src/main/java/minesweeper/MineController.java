@@ -82,7 +82,6 @@ public class MineController {
     private void leftButtonPressed(ActionEvent event){
         int[] position = getPosition((Button) event.getSource());
         Button button = matrix[position[0]][position[1]];
-        System.out.println("pos: " + position[0] + ", " + position[1]);
         
         if (!isGenerated){
             generate(position);
@@ -121,8 +120,9 @@ public class MineController {
             numOpen++;
 
             if ((maxCol * maxRow) == (numOpen + numBomb)){
-                disableBlock(true);
                 end = System.currentTimeMillis();
+                disableButtons(true);
+                flags.setText("YOU WON");
                 System.out.println("YOU WON: " + (end-start)/1000 + " sec");
 
                 addRecord();
