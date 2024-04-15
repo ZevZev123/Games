@@ -1,6 +1,5 @@
 .label {
     -fx-font-size: 20px;
-    
 }
 
 .button-game {
@@ -9,7 +8,7 @@
     -fx-max-width: 25px;
     -fx-max-height: 25px;
     
-    -fx-border-color: rgb(65, 65, 65);
+    -fx-border-color: rgb(105, 105, 105);
     -fx-border-size: 1px;
     
     -fx-text-fill: transparent;

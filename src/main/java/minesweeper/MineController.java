@@ -32,8 +32,6 @@ public class MineController {
     private GridPane mines;
     @FXML
     private Label flags;
-    @FXML
-    private Label maxFlags;
 
     private int maxRow = 20;
     private int maxCol = 25;
@@ -49,7 +47,7 @@ public class MineController {
 
     @FXML
     private void initialize(){
-        maxFlags.setText(String.valueOf(numBomb));
+        flags.setText(String.valueOf(numBomb));
         Button button;
         for (int row = 0; row < maxCol; row++){
             for (int col = 0; col < maxRow; col++){
@@ -103,6 +101,7 @@ public class MineController {
     }
 
     private void explosion(Button button){
+        flags.setText("GAME OVER");
         button.setStyle("-fx-background-color:red;");
         showBombs();
         disableButtons();
@@ -154,7 +153,7 @@ public class MineController {
             System.out.println("json file empty");
         }
 
-        MyDataMine numData = new MyDataMine(end-start);
+        MyDataMine numData = new MyDataMine((end-start)/1000);
 
         dataList.add(numData);
         Collections.sort(dataList);
@@ -221,11 +220,11 @@ public class MineController {
         if (!button.getStyleClass().contains("flag")){
             if (button.getStyleClass().contains("button-locked")){
                 button.getStyleClass().addAll("flag");
-                flags.setText("" + (Integer.parseInt(flags.getText())+1));
+                flags.setText("" + (Integer.parseInt(flags.getText())-1));
             }
         } else {
             button.getStyleClass().setAll("button-game","button-locked");
-            flags.setText("" + (Integer.parseInt(flags.getText())-1));
+            flags.setText("" + (Integer.parseInt(flags.getText())+1));
         }
     }
 
@@ -321,6 +320,7 @@ public class MineController {
 
     @FXML
     private void restartGame(){
+        flags.setText(String.valueOf(numBomb));
         for (Button[] list: matrix){
             for (Button button: list){
                 button.getStyleClass().setAll("button-game", "button-locked");
