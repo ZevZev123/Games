@@ -104,7 +104,7 @@ public class MineController {
         flags.setText("GAME OVER");
         button.setStyle("-fx-background-color:red;");
         showBombs();
-        disableButtons();
+        disableBlock(true);
         System.out.println("Game Over");
     }
 
@@ -121,6 +121,7 @@ public class MineController {
             numOpen++;
 
             if ((maxCol * maxRow) == (numOpen + numBomb)){
+                disableBlock(true);
                 end = System.currentTimeMillis();
                 System.out.println("YOU WON: " + (end-start)/1000 + " sec");
 
@@ -150,7 +151,7 @@ public class MineController {
         try{
             dataList = mapper.readValue(file, new TypeReference<List<MyDataMine>>() {});
         } catch (IOException e) {
-            System.out.println("json file empty");
+            System.out.println("json file empty\n" + e);
         }
 
         MyDataMine numData = new MyDataMine((end-start)/1000);
@@ -310,10 +311,10 @@ public class MineController {
         }
     }
 
-    private void disableButtons(){
+    private void disableBlock(Boolean block){
         for (Button[] list: matrix){
             for (Button button: list){
-                button.setDisable(true);
+                button.setDisable(block);
             }
         }
     }
@@ -321,6 +322,7 @@ public class MineController {
     @FXML
     private void restartGame(){
         flags.setText(String.valueOf(numBomb));
+        numOpen = 0;
         for (Button[] list: matrix){
             for (Button button: list){
                 button.getStyleClass().setAll("button-game", "button-locked");
