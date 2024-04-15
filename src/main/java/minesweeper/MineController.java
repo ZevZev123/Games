@@ -24,8 +24,12 @@ public class MineController {
 
     private int maxRow = 20;
     private int maxCol = 25;
+    private int numBomb = 130;
     private Button[][] matrix = new Button[maxCol][maxRow];
     private boolean isGenerated = false;
+
+    private long start;
+    private long end;
 
     private Random rand = new Random();
 
@@ -70,6 +74,7 @@ public class MineController {
         
         if (!isGenerated){
             generate(position);
+            start = System.currentTimeMillis();
             isGenerated = true;
         }
         if (button.getText() == "bomb"){
@@ -80,7 +85,7 @@ public class MineController {
             openWithFlag(position);
         }
     }
-    
+
     private void explosion(Button button){
         button.setStyle("-fx-background-color:red;");
         showBombs();
@@ -96,6 +101,10 @@ public class MineController {
                 button.getStyleClass().setAll("button-game", "bomb0");
             } else {
                 button.getStyleClass().setAll("button-game", button.getText());
+            }
+
+            if ((maxCol * maxRow - numBomb) == 0){
+                System.out.println("YOU WON");
             }
         }
         
