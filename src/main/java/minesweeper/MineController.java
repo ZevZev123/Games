@@ -3,11 +3,20 @@ package minesweeper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /*
  * expert   -> 32 x 18 -> 150 mines
@@ -21,10 +30,15 @@ import java.util.Random;
 public class MineController {
     @FXML
     private GridPane mines;
+    @FXML
+    private Label flags;
+    @FXML
+    private Label maxFlags;
 
     private int maxRow = 20;
     private int maxCol = 25;
-    private int numBomb = 130;
+    private int numBomb = 30;
+    private int numOpen = 0;
     private Button[][] matrix = new Button[maxCol][maxRow];
     private boolean isGenerated = false;
 
@@ -35,13 +49,13 @@ public class MineController {
 
     @FXML
     private void initialize(){
+        maxFlags.setText(String.valueOf(numBomb));
         Button button;
         for (int row = 0; row < maxCol; row++){
             for (int col = 0; col < maxRow; col++){
                 button = new Button();
                 button.setOnAction(event -> leftButtonPressed(event));
                 button.setOnMouseClicked(event ->{
-                    System.out.println(event.getButton());
                     if (event.getButton() == MouseButton.SECONDARY){
                         flag(event);
                     }
@@ -77,12 +91,14 @@ public class MineController {
             start = System.currentTimeMillis();
             isGenerated = true;
         }
-        if (button.getText() == "bomb"){
-            explosion(button);
-        } else if (button.getStyleClass().contains("button-locked")) {
-            open(position);
-        } else {
-            openWithFlag(position);
+        if (!button.getStyleClass().contains("flag")){
+            if (button.getText() == "bomb"){
+                explosion(button);
+            } else if (button.getStyleClass().contains("button-locked")) {
+                open(position);
+            } else {
+                openWithFlag(position);
+            }
         }
     }
 
@@ -103,8 +119,13 @@ public class MineController {
                 button.getStyleClass().setAll("button-game", button.getText());
             }
 
-            if ((maxCol * maxRow - numBomb) == 0){
-                System.out.println("YOU WON");
+            numOpen++;
+
+            if ((maxCol * maxRow) == (numOpen + numBomb)){
+                end = System.currentTimeMillis();
+                System.out.println("YOU WON: " + (end-start)/1000 + " sec");
+
+                addRecord();
             }
         }
         
@@ -118,6 +139,41 @@ public class MineController {
                     }
                 }
             }
+        }
+    }
+
+    private void addRecord(){
+        File file = new File("src\\main\\resources\\minesweeper\\records.json");
+
+        ObjectMapper mapper = new ObjectMapper();
+        List<MyDataMine> dataList = new ArrayList<>();
+
+        try{
+            dataList = mapper.readValue(file, new TypeReference<List<MyDataMine>>() {});
+        } catch (IOException e) {
+            System.out.println("json file empty");
+        }
+
+        MyDataMine numData = new MyDataMine(end-start);
+
+        dataList.add(numData);
+        Collections.sort(dataList);
+        
+        // ELIMINAZIONE DI TUTTI I MyData TRANNE I PRIMI 10 //
+        // dataList.subList(10, dataList.size()).clear();
+
+        /*
+        System.out.println("\nSTAMPA TOTALE DEL FILE records.json:");
+        for (MyData datalist2 : dataList){
+            System.out.println(datalist2);
+        }
+        */
+
+        try {
+            mapper.writeValue(file, dataList);
+            System.out.println("Saved");
+        } catch (IOException e) {
+            System.err.println("Error: \n" + e);
         }
     }
 
@@ -165,9 +221,11 @@ public class MineController {
         if (!button.getStyleClass().contains("flag")){
             if (button.getStyleClass().contains("button-locked")){
                 button.getStyleClass().addAll("flag");
+                flags.setText("" + (Integer.parseInt(flags.getText())+1));
             }
         } else {
             button.getStyleClass().setAll("button-game","button-locked");
+            flags.setText("" + (Integer.parseInt(flags.getText())-1));
         }
     }
 
@@ -185,11 +243,11 @@ public class MineController {
     private void generate(int[] position){
         int count = 0;
         int x, y;
-        while (count < 130){
+        while (count < numBomb){
             x = rand.nextInt(maxCol);
             y = rand.nextInt(maxRow);
 
-            if (matrix[x][y].getText().equals("bomb")){
+            if (!matrix[x][y].getText().equals("bomb")){
                 if ((x < (position[0]-1) || x > (position[0]+1)) || (y < (position[1]-1) || y > (position[1]+1))){
                     matrix[x][y].setText("bomb");
                     //matrix[x][y].getStyleClass().addAll("bomb");

@@ -4,6 +4,12 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="minesweeper.MineController">
+    <top>
+        <VBox alignment="center" style="-fx-padding: 10 0 10 0;">
+            <Label fx:id="flags" text="0" alignment="center"/>
+            <Label fx:id="maxFlags" alignment="center" style="-fx-border-top-color: black;"/>
+        </VBox>
+    </top>
     <center>
         <GridPane fx:id="mines" alignment="center">
             <!-- BUTTON LIST -->
