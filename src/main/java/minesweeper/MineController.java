@@ -35,7 +35,7 @@ public class MineController {
 
     private int maxRow = 20;
     private int maxCol = 25;
-    private int numBomb = 30;
+    private int numBomb = 20;
     private int numOpen = 0;
     private Button[][] matrix = new Button[maxCol][maxRow];
     private boolean isGenerated = false;
@@ -121,7 +121,7 @@ public class MineController {
 
             if ((maxCol * maxRow) == (numOpen + numBomb)){
                 end = System.currentTimeMillis();
-                disableButtons(true);
+                disableBlock(true);
                 flags.setText("YOU WON");
                 System.out.println("YOU WON: " + (end-start)/1000 + " sec");
 
@@ -154,7 +154,8 @@ public class MineController {
             System.out.println("json file empty\n" + e);
         }
 
-        MyDataMine numData = new MyDataMine((end-start)/1000);
+        MyDataMine numData = new MyDataMine((end-start)/1000, maxCol, maxRow, numBomb);
+        System.out.println(numData.getRatio());
 
         dataList.add(numData);
         Collections.sort(dataList);
