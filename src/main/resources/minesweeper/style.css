@@ -21,12 +21,17 @@
     -fx-background-size: 25px;
 }
 
+.flag {
+    -fx-background-image: url("../images/minesweeper.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 25px;
+}
+
 .bomb {
     -fx-background-image: url("../images/bomb.png");
     -fx-background-repeat: no-repeat;
     -fx-background-size: 25px;
 }
-
 
 .bomb0 {
     -fx-background-size: 0px;

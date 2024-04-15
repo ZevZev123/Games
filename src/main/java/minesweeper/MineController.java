@@ -4,17 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.util.Random;
 
 /*
  * expert   -> 32 x 18 -> 150 mines
- * huge     ->
- * hard     ->
- * medium   ->
- * easy     ->
- * begginer ->
+ * huge     -> 
+ * hard     -> 
+ * medium   -> 
+ * easy     -> 
+ * begginer -> 
  */
 
 public class MineController {
@@ -35,7 +36,12 @@ public class MineController {
             for (int col = 0; col < maxRow; col++){
                 button = new Button();
                 button.setOnAction(event -> leftButtonPressed(event));
-                
+                button.setOnMouseClicked(event ->{
+                    System.out.println(event.getButton());
+                    if (event.getButton() == MouseButton.SECONDARY){
+                        flag(event);
+                    }
+                });
 
                 /*
                 button.setOnMousePressed(event -> {
@@ -59,22 +65,29 @@ public class MineController {
     @FXML
     private void leftButtonPressed(ActionEvent event){
         int[] position = getPosition((Button) event.getSource());
+        Button button = matrix[position[0]][position[1]];
         System.out.println("pos: " + position[0] + ", " + position[1]);
         
         if (!isGenerated){
             generate(position);
             isGenerated = true;
         }
-        if (matrix[position[0]][position[1]].getText() == "bomb"){
-            matrix[position[0]][position[1]].setStyle("-fx-background-color:red;");
-            showBombs();
-            disableButtons();
-            System.out.println("Game Over");
-        } else {
+        if (button.getText() == "bomb"){
+            explosion(button);
+        } else if (button.getStyleClass().contains("button-locked")) {
             open(position);
+        } else {
+            openWithFlag(position);
         }
     }
     
+    private void explosion(Button button){
+        button.setStyle("-fx-background-color:red;");
+        showBombs();
+        disableButtons();
+        System.out.println("Game Over");
+    }
+
     private void open(int[] position){
         Button button = matrix[position[0]][position[1]];
         
@@ -99,6 +112,35 @@ public class MineController {
         }
     }
 
+    private void openWithFlag(int[] position){
+        Button button = matrix[position[0]][position[1]];
+        int countFlag = 0;
+        for (int col = (position[0]-1); col < (position[0]+2); col++){
+            for (int row = (position[1]-1); row < (position[1]+2); row++){
+                if ((col >= 0 && row >= 0) && (col < maxCol && row < maxRow)){
+                    if (matrix[col][row].getStyleClass().contains("flag")){
+                        countFlag++;
+                    }
+                }
+            }
+        }
+
+        if (button.getStyleClass().contains("bomb"+countFlag)){
+            for (int col = (position[0]-1); col < (position[0]+2); col++){
+                for (int row = (position[1]-1); row < (position[1]+2); row++){
+                    if ((col >= 0 && row >= 0) && (col < maxCol && row < maxRow)){
+                        if (matrix[col][row].getText().equals("bomb") && !matrix[col][row].getStyleClass().contains("flag")){
+                            explosion(matrix[col][row]);
+                        }
+                        if (matrix[col][row].getStyleClass().contains("button-locked") && !matrix[col][row].getText().equals("bomb")){
+                            open(new int[] {col, row});
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private void showBombs(){
         for (Button[] list1 : matrix){
             for (Button button : list1){
@@ -109,11 +151,12 @@ public class MineController {
         }
     }
 
-    private void flag(ActionEvent event){
-        int[] position = getPosition((Button) event.getSource());
-        Button button = matrix[position[0]][position[1]];
-        if (button.getStyleClass().contains("mine")){
-            button.getStyleClass().addAll("mine");
+    private void flag(MouseEvent event){
+        Button button = ((Button) event.getSource());
+        if (!button.getStyleClass().contains("flag")){
+            if (button.getStyleClass().contains("button-locked")){
+                button.getStyleClass().addAll("flag");
+            }
         } else {
             button.getStyleClass().setAll("button-game","button-locked");
         }
@@ -137,10 +180,12 @@ public class MineController {
             x = rand.nextInt(maxCol);
             y = rand.nextInt(maxRow);
 
-            if ((x < (position[0]-1) || x > (position[0]+1)) || (y < (position[1]-1) || y > (position[1]+1))){
-                matrix[x][y].setText("bomb");
-                //matrix[x][y].getStyleClass().addAll("bomb");
-                count++;
+            if (matrix[x][y].getText().equals("bomb")){
+                if ((x < (position[0]-1) || x > (position[0]+1)) || (y < (position[1]-1) || y > (position[1]+1))){
+                    matrix[x][y].setText("bomb");
+                    //matrix[x][y].getStyleClass().addAll("bomb");
+                    count++;
+                }
             }
         }
 
