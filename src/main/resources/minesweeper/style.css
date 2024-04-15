@@ -3,20 +3,20 @@
     -fx-min-height: 25px;
     -fx-max-width: 25px;
     -fx-max-height: 25px;
-
+    
     -fx-border-color: rgb(65, 65, 65);
     -fx-border-size: 1px;
-
+    
+    -fx-background-image: url("../images/unrevealed.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 25px;
+    
     -fx-text-fill: transparent;
-
+    
     -fx-background-color: #aeaeae;
 }
 .button-game:hover {
     -fx-background-color: #747474;
-}
-
-.button-unlocked {
-    -fx-background-color: rgb(65, 65, 65);
 }
 
 .bomb {
@@ -25,6 +25,10 @@
     -fx-background-size: 25px;
 }
 
+
+.bomb0 {
+    -fx-background-size: 0px;
+}
 .bomb1 {
     -fx-background-image: url("../images/bomb1.png");
     -fx-background-repeat: no-repeat;

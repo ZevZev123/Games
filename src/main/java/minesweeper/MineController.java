@@ -74,27 +74,26 @@ public class MineController {
     }
     
     private void open(int[] position){
-        System.out.println("OPEN");
         Button button = matrix[position[0]][position[1]];
         
         if (!button.getStyleClass().contains(button.getText())){
-            button.getStyleClass().addAll(button.getText());
+            if (button.getText() == ""){
+                button.getStyleClass().addAll("bomb0");
+            } else {
+                button.getStyleClass().addAll(button.getText());
+            }
         }
         
         if (button.getStyleClass().contains("")){
             for (int col = (position[0]-1); col < (position[0]+2); col++){
                 for (int row = (position[1]-1); row < (position[1]+2); row++){
-                    if ((col >= 0 && row >= 0) && (col < maxCol && row < maxRow)){
-                        open(new int[] {col, row});
+                    if ((col >= 0 && row >= 0) && (col < maxCol && row < maxRow) && (col != position[0] || row != position[1])){
+                        System.out.println(row + "\t" + col);
+                        //open(new int[] {col, row});
                     }
-                    
                 }
             }
-        }
-
-        
-        System.out.println(button.getStyleClass().size());
-        
+        }      
     }
 
     private void showBombs(){

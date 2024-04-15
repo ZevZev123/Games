@@ -14,7 +14,7 @@ public class MineMain extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/minesweeper/structure.fxml"));
         primaryStage.setTitle("Minesweeper");
         primaryStage.getIcons().add(new Image("file:src\\main\\resources\\images\\minesweeper.png"));
-        Scene scene = new Scene(root, 700, 700);
+        Scene scene = new Scene(root, 700, 600);
         scene.getStylesheets().add(getClass().getResource("/minesweeper/style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
