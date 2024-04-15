@@ -35,6 +35,8 @@ public class MineController {
             for (int col = 0; col < maxRow; col++){
                 button = new Button();
                 button.setOnAction(event -> leftButtonPressed(event));
+                
+
                 /*
                 button.setOnMousePressed(event -> {
                         if (event.getButton() == MouseButton.PRIMARY) {
@@ -46,7 +48,7 @@ public class MineController {
                     putFlag(event);
                 });
                 */
-                button.getStyleClass().setAll("button-game");
+                button.getStyleClass().setAll("button-game", "button-locked");
 
                 matrix[row][col] = button;
                 mines.add(button, row, col);
@@ -78,22 +80,23 @@ public class MineController {
         
         if (!button.getStyleClass().contains(button.getText())){
             if (button.getText() == ""){
-                button.getStyleClass().addAll("bomb0");
+                button.getStyleClass().setAll("button-game", "bomb0");
             } else {
-                button.getStyleClass().addAll(button.getText());
+                button.getStyleClass().setAll("button-game", button.getText());
             }
         }
         
-        if (button.getStyleClass().contains("")){
+        if (button.getStyleClass().contains("bomb0")){
             for (int col = (position[0]-1); col < (position[0]+2); col++){
                 for (int row = (position[1]-1); row < (position[1]+2); row++){
                     if ((col >= 0 && row >= 0) && (col < maxCol && row < maxRow) && (col != position[0] || row != position[1])){
-                        System.out.println(row + "\t" + col);
-                        //open(new int[] {col, row});
+                        if (matrix[col][row].getStyleClass().contains("button-locked")){
+                            open(new int[] {col, row});
+                        }
                     }
                 }
             }
-        }      
+        }
     }
 
     private void showBombs(){
@@ -108,10 +111,11 @@ public class MineController {
 
     private void flag(ActionEvent event){
         int[] position = getPosition((Button) event.getSource());
-        if (matrix[position[0]][position[1]].getStyleClass().contains("mine")){
-            matrix[position[0]][position[1]].getStyleClass().addAll("mine");
+        Button button = matrix[position[0]][position[1]];
+        if (button.getStyleClass().contains("mine")){
+            button.getStyleClass().addAll("mine");
         } else {
-            matrix[position[0]][position[1]].getStyleClass().setAll("button-game");
+            button.getStyleClass().setAll("button-game","button-locked");
         }
     }
 
@@ -207,7 +211,7 @@ public class MineController {
     private void restartGame(){
         for (Button[] list: matrix){
             for (Button button: list){
-                button.getStyleClass().setAll("button-game");
+                button.getStyleClass().setAll("button-game", "button-locked");
                 button.setStyle("-fx-background-color: #aeaeae;");
                 button.setText("");
                 button.setDisable(false);

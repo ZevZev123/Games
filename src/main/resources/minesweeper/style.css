@@ -7,16 +7,18 @@
     -fx-border-color: rgb(65, 65, 65);
     -fx-border-size: 1px;
     
-    -fx-background-image: url("../images/unrevealed.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: 25px;
-    
     -fx-text-fill: transparent;
     
     -fx-background-color: #aeaeae;
 }
 .button-game:hover {
     -fx-background-color: #747474;
+}
+
+.button-locked {
+    -fx-background-image: url("../images/unrevealed.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 25px;
 }
 
 .bomb {
