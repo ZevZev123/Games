@@ -5,7 +5,6 @@ module games {
     requires com.fasterxml.jackson.core;
     requires javafx.graphics;
     requires javafx.base;
-    requires com.google.gson;
     
     opens puzzle15 to javafx.fxml;
     exports puzzle15;
