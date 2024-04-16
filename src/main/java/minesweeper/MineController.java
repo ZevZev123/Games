@@ -8,7 +8,14 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.io.File;
+import java.io.IOError;
+import java.io.IOException;
+import java.util.List;
 import java.util.Random;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /*
  * expert   -> 32 x 18 -> 150 mines
@@ -114,7 +121,7 @@ public class MineController {
             if ((maxCol * maxRow) == (numOpen + numBomb)){
                 end = System.currentTimeMillis();
                 disableBlock(true);
-                flags.setText("YOU WON");
+                flags.setText("You won in " + (end-start)/1000 + " sec");
                 System.out.println("YOU WON: " + (end-start)/1000 + " sec");
 
                 addRecord();
@@ -135,7 +142,17 @@ public class MineController {
     }
 
     private void addRecord(){
-        
+        File file = new File("src\\main\\resources\\minesweeper\\records.json");
+        ObjectMapper objectMapper = new ObjectMapper();
+        try{
+            List<MyDataMine> myData = objectMapper.readValue(file, new TypeReference<List<MyDataMine>>() {});
+            myData.add(new MyDataMine((end-start)/1000, maxCol, maxRow, numBomb));
+
+            objectMapper.writeValue(file, myData);
+            System.out.println("Saved");
+        } catch (IOException e) {
+            System.err.println("Error:\n" + e);
+        }
     }
 
     private void openWithFlag(int[] position){

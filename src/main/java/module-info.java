@@ -9,6 +9,6 @@ module games {
     opens puzzle15 to javafx.fxml;
     exports puzzle15;
 
-    opens minesweeper to javafx.fxml;
+    opens minesweeper to javafx.fxml, com.fasterxml.jackson.databind;
     exports minesweeper;
 }
