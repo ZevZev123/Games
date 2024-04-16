@@ -17,6 +17,7 @@ import java.util.Random;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.reflect.TypeToken;
 
 /*
  * expert   -> 32 x 18 -> 150 mines
@@ -143,38 +144,11 @@ public class MineController {
     }
 
     private void addRecord(){
-        File file = new File("src\\main\\resources\\minesweeper\\records.json");
-
-        ObjectMapper mapper = new ObjectMapper();
-        List<MyDataMine> dataList = new ArrayList<>();
-
-        try{
-            dataList = mapper.readValue(file, new TypeReference<List<MyDataMine>>() {});
-        } catch (IOException e) {
-            System.out.println("json file empty\n" + e);
-        }
-
-        MyDataMine numData = new MyDataMine((end-start)/1000, maxCol, maxRow, numBomb);
-        System.out.println(numData.getRatio());
-
-        dataList.add(numData);
-        Collections.sort(dataList);
-        
-        // ELIMINAZIONE DI TUTTI I MyData TRANNE I PRIMI 10 //
-        // dataList.subList(10, dataList.size()).clear();
-
-        /*
-        System.out.println("\nSTAMPA TOTALE DEL FILE records.json:");
-        for (MyData datalist2 : dataList){
-            System.out.println(datalist2);
-        }
-        */
-
+        Gson gson = new Gson();
         try {
-            mapper.writeValue(file, dataList);
-            System.out.println("Saved");
+            Type listType = new TypeToken<List<MyDataMine>>(){}.getType();
         } catch (IOException e) {
-            System.err.println("Error: \n" + e);
+            System.out.println("ERROR: " + e);
         }
     }
 
