@@ -9,7 +9,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.io.File;
-import java.io.IOError;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
@@ -19,11 +18,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /*
  * expert   -> 32 x 18 -> 150 mines
- * huge     -> 
- * hard     -> 
- * medium   -> 
- * easy     -> 
- * begginer -> 
+ * huge     -> 48 x 27 -> 220 mines 
+ * hard     -> 32 x 18 -> 100 mines
+ * medium   -> 22 x 12 -> 40 mines
+ * easy     -> 10 x 7 -> 10 mines
+ * begginer -> 22 x 12 -> 12 mines
  */
 
 public class MineController {
@@ -34,7 +33,7 @@ public class MineController {
 
     private int maxRow = 20;
     private int maxCol = 25;
-    private int numBomb = 20;
+    private int numBomb = 100;
     private int numOpen = 0;
     private Button[][] matrix = new Button[maxCol][maxRow];
     private boolean isGenerated = false;
