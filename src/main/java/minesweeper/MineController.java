@@ -8,16 +8,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.reflect.TypeToken;
 
 /*
  * expert   -> 32 x 18 -> 150 mines
@@ -144,12 +135,7 @@ public class MineController {
     }
 
     private void addRecord(){
-        Gson gson = new Gson();
-        try {
-            Type listType = new TypeToken<List<MyDataMine>>(){}.getType();
-        } catch (IOException e) {
-            System.out.println("ERROR: " + e);
-        }
+        
     }
 
     private void openWithFlag(int[] position){
