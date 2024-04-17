@@ -1,0 +1,11 @@
+.button {
+    -fx-min-width: 100px;
+    -fx-min-height: 25px;
+}
+
+.label {
+    -fx-min-width: 150px;
+    -fx-min-height: 25px;
+
+    -fx-font-size: 22;
+}

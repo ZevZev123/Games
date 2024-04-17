@@ -15,8 +15,10 @@
         </GridPane>
     </center>
     <bottom>
-        <VBox alignment="center" style="-fx-padding: 10 0 10 0;">
-            <Button text="Restart" onAction="#restartGame"/>
-        </VBox>
+        <GridPane alignment="center" style="-fx-padding: 10 0 10 0;">
+
+            <Button text="LeaderBoard" onAction="#showLeaderboard" GridPane.columnIndex="0"/>
+            <Button text="Restart" onAction="#restartGame" GridPane.columnIndex="1"/>
+        </GridPane>
     </bottom>
 </BorderPane>

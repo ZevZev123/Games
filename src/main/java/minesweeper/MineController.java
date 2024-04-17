@@ -2,11 +2,16 @@ package minesweeper;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -308,6 +313,25 @@ public class MineController {
                 button.setDisable(false);
                 isGenerated = false;
             }
+        }
+    }
+
+    @FXML
+    private void showLeaderboard(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("structure2.fxml"));
+        try {
+            Parent root = loader.load();
+        
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Leaderboard");
+            stage.setWidth(350);
+            stage.setHeight(500);
+            
+            stage.getIcons().add(new Image("file:src\\main\\resources\\images\\crown.png"));
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("ERRORE:\n" + e);
         }
     }
 }
