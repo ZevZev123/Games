@@ -4,6 +4,9 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tris.TrisController">
+    <top>
+        <Label fx:id="label" text="Turn: X"/>
+    </top>
     <center>
         <GridPane fx:id="matrice" alignment="center" hgap="5" vgap="5">
 
