@@ -13,11 +13,8 @@
     </top>
     <center>
         <!-- <ScrollPane style="-fx-border-color:black;"> -->
-        <GridPane fx:id="gridpane" style="-fx-border-color: black; -fx-width: 300px; -fx-display: flex; -fx-justify-content: space-around;" hgap="5" vgap="5">
+        <GridPane fx:id="gridpane" style="-fx-border-color: black;" alignment="center" hgap="5" vgap="5">
             <!-- RECORDS LIST -->
-            <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-            <Label text="2" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-            <Label text="3" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
         </GridPane>
         <!-- </ScrollPane> -->
     </center>

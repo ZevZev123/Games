@@ -15,8 +15,7 @@
         </GridPane>
     </center>
     <bottom>
-        <GridPane alignment="center" style="-fx-padding: 10 0 10 0;">
-
+        <GridPane alignment="center" style="-fx-padding: 10 0 10 0;" hgap="5">
             <Button text="LeaderBoard" onAction="#showLeaderboard" GridPane.columnIndex="0"/>
             <Button text="Restart" onAction="#restartGame" GridPane.columnIndex="1"/>
         </GridPane>
