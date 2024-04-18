@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tris.TrisController">
+    <center>
+        <GridPane fx:id="matrice" alignment="center" hgap="5" vgap="5">
+
+        </GridPane>
+    </center>
+    <bottom>
+        <Button text="Restart" style="-fx-max-width: 25px;" onAction="#restart"/>
+    </bottom>
+</BorderPane>
