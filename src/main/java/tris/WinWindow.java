@@ -1,26 +1,28 @@
 package tris;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class WinWindow {
-    @FXML private GridPane gridpane;
+    @FXML private Label label;
+    @FXML private Button exitButton;
 
     private char winner;
 
-    @FXML
-    private void initialize(){
-        Label text = new Label();
-        if (winner == 'x')
-            text.setText("X wins");
+    public void setWindow(Character winner){
+        this.winner = winner;
+
+        if (this.winner == 'x')
+            label.setText("X wins");
         else
-            text.setText("O wins");    
-        
-        gridpane.add(text, 0, 0);
+            label.setText("O wins");    
     }
 
-    public void setWinner(Character winner) {
-        this.winner = winner;
+    @FXML
+    private void exit(){
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
     }
 }

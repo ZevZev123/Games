@@ -16,7 +16,7 @@
     </center>
     <bottom>
         <HBox alignment="center" style="-fx-padding: 10;">
-            <Button text="Restart" style="-fx-max-width: 25px;" onAction="#restart"/>
+            <Button text="Restart" style="-fx-min-width: 30px;" onAction="#restart"/>
         </HBox>
     </bottom>
 </BorderPane>

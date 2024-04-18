@@ -1,3 +1,13 @@
+.label {
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+
+button {
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+
 .button-game {
     -fx-min-height: 70px;
     -fx-min-width: 70px;
@@ -18,5 +28,4 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: 50px;
     -fx-background-position: center;
-
 }

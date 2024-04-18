@@ -1,0 +1,17 @@
+.label {
+    -fx-min-width: 100px;
+    -fx-min-height: 20px;
+    
+    -fx-alignment: center;
+    
+    -fx-font-size: 20;
+}
+
+.button {
+    -fx-min-width: 100px;
+    -fx-min-height: 20px;
+    
+    -fx-alignment: center;
+
+    -fx-font-size: 20;
+}
