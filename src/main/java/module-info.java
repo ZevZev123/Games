@@ -11,4 +11,7 @@ module games {
 
     opens minesweeper to javafx.fxml, com.fasterxml.jackson.databind;
     exports minesweeper;
+
+    opens tris to javafx.fxml;
+    exports tris;
 }

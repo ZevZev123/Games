@@ -31,10 +31,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 
 public class MineController {
-    @FXML
-    private GridPane mines;
-    @FXML
-    private Label flags;
+    @FXML private GridPane mines;
+    @FXML private Label flags;
 
     private int maxRow = 20;
     private int maxCol = 25;

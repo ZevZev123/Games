@@ -15,10 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Leaderboard {
-    @FXML
-    private GridPane gridpane;
-    @FXML
-    private Button button;
+    @FXML private GridPane gridpane;
+    @FXML private Button button;
 
     private Label[] matrix = new Label[20];
 

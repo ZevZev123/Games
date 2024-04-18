@@ -13,6 +13,9 @@
 
     -fx-font-size: 24;
 }
+.button-game:disabled, .button-game:disabled > * {
+    -fx-opacity: 0.9;
+}
 
 .button-shuffle {
     -fx-background-color: #48ff00;

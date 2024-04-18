@@ -1,3 +1,22 @@
 .button-game {
-    
+    -fx-min-height: 70px;
+    -fx-min-width: 70px;
+}
+.button-game:disabled, .button-game:disabled > * {
+    -fx-opacity: 0.9;
+}
+
+.x-button {
+    -fx-background-image: url("../images/trisX.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+    -fx-background-position: center;
+}
+
+.o-button {
+    -fx-background-image: url("../images/trisO.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50px;
+    -fx-background-position: center;
+
 }

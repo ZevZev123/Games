@@ -5,14 +5,18 @@
 
 <BorderPane prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tris.TrisController">
     <top>
-        <Label fx:id="label" text="Turn: X"/>
+        <HBox alignment="center" style="-fx-padding: 10;">
+            <Label fx:id="label" text="Turn: X"/>
+        </HBox>
     </top>
     <center>
         <GridPane fx:id="matrice" alignment="center" hgap="5" vgap="5">
-
+            <!-- Game Buttons -->
         </GridPane>
     </center>
     <bottom>
-        <Button text="Restart" style="-fx-max-width: 25px;" onAction="#restart"/>
+        <HBox alignment="center" style="-fx-padding: 10;">
+            <Button text="Restart" style="-fx-max-width: 25px;" onAction="#restart"/>
+        </HBox>
     </bottom>
 </BorderPane>

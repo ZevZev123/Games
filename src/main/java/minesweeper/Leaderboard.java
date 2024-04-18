@@ -15,10 +15,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Leaderboard {
-    @FXML
-    private GridPane gridpane;
-    @FXML
-    private Button button;
+    @FXML private GridPane gridpane;
+    @FXML private Button button;
 
     @FXML
     private void initialize(){

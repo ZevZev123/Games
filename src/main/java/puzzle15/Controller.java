@@ -17,9 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Controller {
-    
-    @FXML
-    private GridPane matrice;
+    @FXML private GridPane matrice;
 
     private Button[][] matrix = new Button[4][4];
     private Random rand = new Random();

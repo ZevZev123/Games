@@ -16,10 +16,8 @@ import java.util.List;
 import java.util.Collections;
 
 public class WinWindow {
-    @FXML
-    private Button button;
-    @FXML
-    private GridPane gridpane;
+    @FXML private Button button;
+    @FXML private GridPane gridpane;
 
     private MyData numData;
 
