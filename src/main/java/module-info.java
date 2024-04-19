@@ -14,4 +14,7 @@ module games {
 
     opens tris to javafx.fxml;
     exports tris;
+
+    opens puzzle to javafx.fxml;
+    exports puzzle;
 }
