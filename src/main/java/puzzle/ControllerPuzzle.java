@@ -12,7 +12,7 @@ public class ControllerPuzzle {
 
     @FXML
     private void initialize(){
-        Image originalImage = new Image("../images/orangecar.jpeg");
+        Image originalImage = new Image("file:src\\main\\resources\\images\\orangecar.jpeg");
 
         // Dimensioni dell'immagine originale
         double originalWidth = originalImage.getWidth();
@@ -22,6 +22,8 @@ public class ControllerPuzzle {
         double pieceWidth = originalWidth / 8;
         double pieceHeight = originalHeight / 4;
 
+        System.out.println("tot width: " + originalWidth);
+        System.out.println("tot height: " + originalHeight);
         System.out.println("width: " + pieceWidth);
         System.out.println("height: " + pieceHeight);
 
