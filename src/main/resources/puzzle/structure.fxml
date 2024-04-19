@@ -11,7 +11,7 @@
     </center>
     <bottom>
         <HBox alignment="center" style="-fx-padding: 10;">
-            <Button text="Restart" style="-fx-min-width: 30px;" onAction="#restart"/>
+            <Button text="Shuffle" style="-fx-min-width: 30px;" onAction="#shuffle"/>
         </HBox>
     </bottom>
 </BorderPane>
