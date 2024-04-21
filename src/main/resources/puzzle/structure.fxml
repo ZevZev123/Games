@@ -5,7 +5,7 @@
 
 <BorderPane prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="puzzle.ControllerPuzzle">
     <center>
-        <GridPane fx:id="matrice" alignment="center" hgap="1" vgap="1">
+        <GridPane fx:id="matrice" alignment="center">
             <!-- Game Buttons -->
         </GridPane>
     </center>

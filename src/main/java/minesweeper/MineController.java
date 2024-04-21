@@ -36,7 +36,7 @@ public class MineController {
 
     private int maxRow = 20;
     private int maxCol = 25;
-    private int numBomb = 100;
+    private int numBomb = 90;
     private int numOpen = 0;
     private Button[][] matrix = new Button[maxCol][maxRow];
     private boolean isGenerated = false;

@@ -1,10 +1,10 @@
-.button {
-    -fx-min-width: 50px;
-    -fx-min-height: 50px;
+.button-game {
+    -fx-min-width: 100px;
+    -fx-min-height: 100px;
     
-    -fx-max-width: 50px;
-    -fx-max-height: 50px;
+    -fx-max-width: 100px;
+    -fx-max-height: 100px;
     
     -fx-background-repeat: no-repeat;
-    -fx-background-size: 25px;
+    -fx-background-size: 100px;
 }
