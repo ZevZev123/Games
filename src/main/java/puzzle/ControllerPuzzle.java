@@ -17,6 +17,7 @@ public class ControllerPuzzle {
     private Random random = new Random();
     private int width = 0;
     private int height = 0;
+    private int[] firstPosition = null;
 
     @FXML
     private void initialize(){
@@ -74,10 +75,13 @@ public class ControllerPuzzle {
             }
         }
     }
-
+    
     private void move(ActionEvent event){
         Button button = (Button) event.getSource();
         System.out.println(button.getId());
+        if (firstPosition == null){
+            
+        }
     }
 
     @FXML
