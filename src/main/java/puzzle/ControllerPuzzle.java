@@ -17,17 +17,15 @@ public class ControllerPuzzle {
     private Random random = new Random();
     private int width = 0;
     private int height = 0;
-    private int[] firstPosition = null;
+    private Button buttonBackup = new Button();
 
     @FXML
     private void initialize(){
-        Image originalImage = new Image("file:src\\main\\resources\\images\\capy.jpg");
+        buttonBackup.setId("-1");
+        Image originalImage = new Image("file:src\\main\\resources\\images\\15puzzle.png");
 
         double originalWidth = originalImage.getWidth();
         double originalHeight = originalImage.getHeight();
-
-        System.out.println("tot width: " + originalWidth);
-        System.out.println("tot height: " + originalHeight);
         
         // col - verticale  - heigth
         // row - orizontale - width
@@ -51,9 +49,6 @@ public class ControllerPuzzle {
         pieceWidth = originalWidth / (num2 * minNum);
         pieceHeight = originalHeight / (num1 * minNum);
         
-        System.out.println("orizonatali: " + num1*minNum);
-        System.out.println("verticali  : " + num2*minNum);
-
         width = num1*minNum;
         height = num2*minNum;
         Button button;
@@ -78,28 +73,69 @@ public class ControllerPuzzle {
     
     private void move(ActionEvent event){
         Button button = (Button) event.getSource();
-        System.out.println(button.getId());
-        if (firstPosition == null){
-            
-        }
-    }
-
-    @FXML
-    private void shuffle(){
-        int newWidth;
-        int newHeight;
-        Button buttonBackup;
-
-        for (int row = 0; row < width; row++){
-            for (int col = 0; col < height; col++){
-                newWidth = random.nextInt(width);
-                newHeight = random.nextInt(height);
+        if (buttonBackup.getId() == "-1"){
+            buttonBackup.setGraphic(button.getGraphic());
+            buttonBackup.setId(button.getId());
+        } else {
+            for (int row = 0; row < width; row++){
+                for (int col = 0; col < height; col++){
+                    if (matrix[col][row].getId() == buttonBackup.getId()){
+                        matrix[col][row].setGraphic(button.getGraphic());
+                        matrix[col][row].setId(button.getId());
+                        button.setGraphic(buttonBackup.getGraphic());
+                        button.setId(buttonBackup.getId());
+                        buttonBackup.setId("-1");
+                    }
+                }
+            }
+            if (checkWin()){
+                winWindow();
             }
         }
-        System.out.println("SHUFFLE");
+    }
+    
+    private void winWindow(){
+        System.out.println("YOU WON!");
+    }
+    
+    @FXML
+    private void shuffle(){
+        int firstNewWidth;
+        int firstNewHeight;
+        int secondNewWidth;
+        int secondNewHeight;
+        int count = 0;
+        
+        while (count < 100){
+            firstNewWidth = random.nextInt(width);
+            firstNewHeight = random.nextInt(height);
+
+            secondNewWidth = random.nextInt(width);
+            secondNewHeight = random.nextInt(height);
+            
+            buttonBackup.setGraphic(matrix[firstNewHeight][firstNewWidth].getGraphic());
+            buttonBackup.setId(matrix[firstNewHeight][firstNewWidth].getId());
+
+            matrix[firstNewHeight][firstNewWidth].setGraphic(matrix[secondNewHeight][secondNewWidth].getGraphic());
+            matrix[firstNewHeight][firstNewWidth].setId(matrix[secondNewHeight][secondNewWidth].getId());
+            
+            matrix[secondNewHeight][secondNewWidth].setGraphic(buttonBackup.getGraphic());
+            matrix[secondNewHeight][secondNewWidth].setId(buttonBackup.getId());
+
+            count++;
+        }
+
+        buttonBackup.setId("-1");
     }
 
     private boolean checkWin(){
-        return false;
+        for (int row = 0; row < width; row++){
+            for (int col = 0; col < height; col++){
+                if (!matrix[col][row].getId().equals(""+((row*minNum)+col))){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
