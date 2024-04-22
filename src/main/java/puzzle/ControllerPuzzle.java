@@ -15,7 +15,7 @@ public class ControllerPuzzle {
 
     @FXML
     private void initialize(){
-        Image originalImage = new Image("file:src\\main\\resources\\images\\weirdphoto.jpg");
+        Image originalImage = new Image("file:src\\main\\resources\\images\\capy.jpg");
 
         double originalWidth = originalImage.getWidth();
         double originalHeight = originalImage.getHeight();
@@ -58,6 +58,7 @@ public class ControllerPuzzle {
                 subImages.setFitHeight(98);
                 subImages.setFitWidth(98);
                 button = new Button();
+                button.setId(""+((row*minNum)+col));
                 button.getStyleClass().addAll("button-game");
                 button.setOnAction(event -> move(event));
                 button.setGraphic(subImages);
@@ -69,7 +70,7 @@ public class ControllerPuzzle {
 
     private void move(ActionEvent event){
         Button button = (Button) event.getSource();
-        System.out.println(button.getText());
+        System.out.println(button.getId());
     }
 
     @FXML
