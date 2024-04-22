@@ -1,5 +1,7 @@
 package puzzle;
 
+import java.util.Random;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +14,9 @@ public class ControllerPuzzle {
 
     private Button[][] matrix = new Button[8][4];
     private int minNum = 4;
+    private Random random = new Random();
+    private int width = 0;
+    private int height = 0;
 
     @FXML
     private void initialize(){
@@ -48,10 +53,12 @@ public class ControllerPuzzle {
         System.out.println("orizonatali: " + num1*minNum);
         System.out.println("verticali  : " + num2*minNum);
 
+        width = num1*minNum;
+        height = num2*minNum;
         Button button;
         ImageView subImages = new ImageView(originalImage);
-        for (int row = 0; row < num1*minNum; row++){
-            for (int col = 0; col < num2*minNum; col++){
+        for (int row = 0; row < width; row++){
+            for (int col = 0; col < height; col++){
                 subImages = new ImageView(originalImage);
                 // System.out.println(col*pieceWidth + "\t" + row*pieceHeight + "\t" + pieceWidth + "\t" + pieceHeight + "\t" + col + "\t" + row);
                 subImages.setViewport(new javafx.geometry.Rectangle2D(col*pieceWidth, row*pieceHeight, pieceWidth, pieceHeight));
@@ -75,7 +82,16 @@ public class ControllerPuzzle {
 
     @FXML
     private void shuffle(){
+        int newWidth;
+        int newHeight;
+        Button buttonBackup;
 
+        for (int row = 0; row < width; row++){
+            for (int col = 0; col < height; col++){
+                newWidth = random.nextInt(width);
+                newHeight = random.nextInt(height);
+            }
+        }
         System.out.println("SHUFFLE");
     }
 
