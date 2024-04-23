@@ -22,7 +22,7 @@ public class ControllerPuzzle {
     @FXML
     private void initialize(){
         buttonBackup.setId("-1");
-        Image originalImage = new Image("file:src\\main\\resources\\images\\15puzzle.png");
+        Image originalImage = new Image("file:src\\main\\resources\\images\\weirdphoto.jpg");
 
         double originalWidth = originalImage.getWidth();
         double originalHeight = originalImage.getHeight();
@@ -72,6 +72,7 @@ public class ControllerPuzzle {
     }
     
     private void move(ActionEvent event){
+        System.out.println("MOVE");
         Button button = (Button) event.getSource();
         if (buttonBackup.getId() == "-1"){
             buttonBackup.setGraphic(button.getGraphic());
@@ -85,6 +86,7 @@ public class ControllerPuzzle {
                         button.setGraphic(buttonBackup.getGraphic());
                         button.setId(buttonBackup.getId());
                         buttonBackup.setId("-1");
+                        return;
                     }
                 }
             }
@@ -105,7 +107,8 @@ public class ControllerPuzzle {
         int secondNewWidth;
         int secondNewHeight;
         int count = 0;
-        
+        buttonBackup.setId("-1");
+
         while (count < 100){
             firstNewWidth = random.nextInt(width);
             firstNewHeight = random.nextInt(height);
