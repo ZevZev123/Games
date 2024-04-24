@@ -105,6 +105,13 @@ public class ControllerPuzzle {
 
     @FXML private void imageChange(){
         System.out.println("Image changed");
+        for (int row = 0; row < width; row++){
+            for (int col = 0; col < height; col++){
+                matrice.getChildren().remove(matrix[col][row]);
+                matrix[col][row] = null;
+            }
+        }
+        initialize();
     }
 
     private void move(ActionEvent event){
