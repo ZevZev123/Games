@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 
 public class ControllerPuzzle {
     @FXML private GridPane matrice;
+    @FXML private Label text;
 
     private Button[][] matrix = new Button[15][10];
     private int minNum = 4;
@@ -31,7 +33,8 @@ public class ControllerPuzzle {
     @FXML
     private void initialize(){
         buttonBackup.setId("-1");
-        
+        text.setText("");
+
         File directory = new File("src\\main\\resources\\images\\puzzle");
         
         if (directory.exists() && directory.isDirectory()){
@@ -158,6 +161,7 @@ public class ControllerPuzzle {
     }
     
     private void winWindow(){
+        text.setText("YOU WON");
         System.out.println("YOU WON!");
     }
     
@@ -169,6 +173,7 @@ public class ControllerPuzzle {
         int secondNewHeight;
         int count = 0;
         buttonBackup.setId("-1");
+        text.setText("");
 
         while (count < width*height){
             firstNewWidth = random.nextInt(width);

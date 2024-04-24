@@ -4,6 +4,11 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="puzzle.ControllerPuzzle">
+    <top>
+        <HBox alignment="center" style="-fx-padding:10;">
+            <Label fx:id="text" style="-fx-font-weight: bold; -fx-font-size: 15;"/>
+        </HBox>
+    </top>
     <center>
         <GridPane fx:id="matrice" alignment="center">
             <!-- Game Buttons -->
