@@ -61,7 +61,7 @@ public class ControllerPuzzle {
                 subImages.setFitHeight(98);
                 subImages.setFitWidth(98);
                 button = new Button();
-                button.setId(""+((row*minNum)+col));
+                button.setId(""+(row*height+col));
                 button.getStyleClass().addAll("button-game");
                 button.setOnAction(event -> move(event));
                 button.setGraphic(subImages);
@@ -72,7 +72,6 @@ public class ControllerPuzzle {
     }
     
     private void move(ActionEvent event){
-        System.out.println("MOVE");
         Button button = (Button) event.getSource();
         if (buttonBackup.getId() == "-1"){
             buttonBackup.setGraphic(button.getGraphic());
@@ -86,13 +85,14 @@ public class ControllerPuzzle {
                         button.setGraphic(buttonBackup.getGraphic());
                         button.setId(buttonBackup.getId());
                         buttonBackup.setId("-1");
+
+                        if (checkWin()){
+                            winWindow();
+                        }
                         return;
                     }
                 }
-            }
-            if (checkWin()){
-                winWindow();
-            }
+            }            
         }
     }
     
@@ -109,7 +109,7 @@ public class ControllerPuzzle {
         int count = 0;
         buttonBackup.setId("-1");
 
-        while (count < 100){
+        while (count < 5){
             firstNewWidth = random.nextInt(width);
             firstNewHeight = random.nextInt(height);
 
@@ -134,7 +134,7 @@ public class ControllerPuzzle {
     private boolean checkWin(){
         for (int row = 0; row < width; row++){
             for (int col = 0; col < height; col++){
-                if (!matrix[col][row].getId().equals(""+((row*minNum)+col))){
+                if (!matrix[col][row].getId().equals(""+((row*height)+col))){
                     return false;
                 }
             }
