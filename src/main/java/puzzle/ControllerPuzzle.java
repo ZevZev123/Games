@@ -22,7 +22,7 @@ public class ControllerPuzzle {
     @FXML
     private void initialize(){
         buttonBackup.setId("-1");
-        Image originalImage = new Image("file:src\\main\\resources\\images\\weirdphoto.jpg");
+        Image originalImage = new Image("file:src\\main\\resources\\images\\racoon.png");
 
         double originalWidth = originalImage.getWidth();
         double originalHeight = originalImage.getHeight();
@@ -69,6 +69,7 @@ public class ControllerPuzzle {
                 matrice.add(button, col, row);
             }
         }
+        shuffle();
     }
     
     private void move(ActionEvent event){
@@ -109,7 +110,7 @@ public class ControllerPuzzle {
         int count = 0;
         buttonBackup.setId("-1");
 
-        while (count < 5){
+        while (count < width*height){
             firstNewWidth = random.nextInt(width);
             firstNewHeight = random.nextInt(height);
 
