@@ -1,5 +1,8 @@
 package puzzle;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javafx.event.ActionEvent;
@@ -12,18 +15,35 @@ import javafx.scene.layout.GridPane;
 public class ControllerPuzzle {
     @FXML private GridPane matrice;
 
-    private Button[][] matrix = new Button[8][4];
+    private Button[][] matrix = new Button[15][10];
     private int minNum = 4;
     private Random random = new Random();
     private int width = 0;
     private int height = 0;
     private Button buttonBackup = new Button();
 
+    private List<String> images = new ArrayList<String>();
+
     @FXML
     private void initialize(){
         buttonBackup.setId("-1");
-        Image originalImage = new Image("file:src\\main\\resources\\images\\racoon.png");
+        
+        File directory = new File("src\\main\\resources\\images\\puzzle");
+        
+        if (directory.exists() && directory.isDirectory()){
+            File[] files = directory.listFiles();
+            
+            for (File file : files){
+                if (file.isFile() && isImage(file.getName())){
+                    images.add(file.getName());
+                }
+            }
+        } else {
+            System.out.println("DIRECTORY ERROR");
+        }
 
+        Image originalImage = new Image(String.format("file:src\\main\\resources\\images\\puzzle\\%s", images.get(random.nextInt(images.size()))));
+        
         double originalWidth = originalImage.getWidth();
         double originalHeight = originalImage.getHeight();
         
@@ -58,8 +78,8 @@ public class ControllerPuzzle {
                 subImages = new ImageView(originalImage);
                 // System.out.println(col*pieceWidth + "\t" + row*pieceHeight + "\t" + pieceWidth + "\t" + pieceHeight + "\t" + col + "\t" + row);
                 subImages.setViewport(new javafx.geometry.Rectangle2D(col*pieceWidth, row*pieceHeight, pieceWidth, pieceHeight));
-                subImages.setFitHeight(98);
-                subImages.setFitWidth(98);
+                subImages.setFitHeight(99);
+                subImages.setFitWidth(99);
                 button = new Button();
                 button.setId(""+(row*height+col));
                 button.getStyleClass().addAll("button-game");
@@ -72,6 +92,21 @@ public class ControllerPuzzle {
         shuffle();
     }
     
+    private boolean isImage(String fileName){
+        String[] extentions = {".png", ".jpg", ".jpeg"};
+        
+        for (String extetion : extentions){
+            if (fileName.toLowerCase().endsWith(extetion)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @FXML private void imageChange(){
+        System.out.println("Image changed");
+    }
+
     private void move(ActionEvent event){
         Button button = (Button) event.getSource();
         if (buttonBackup.getId() == "-1"){

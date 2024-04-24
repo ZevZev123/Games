@@ -10,8 +10,9 @@
         </GridPane>
     </center>
     <bottom>
-        <HBox alignment="center" style="-fx-padding: 10;">
-            <Button text="Shuffle" style="-fx-min-width: 30px;" onAction="#shuffle"/>
-        </HBox>
+        <GridPane alignment="center" style="-fx-padding: 10;">
+            <Button text="Change Image" style="-fx-min-width: 30px;" onAction="#imageChange" GridPane.columnIndex="0"/>
+            <Button text="Shuffle" style="-fx-min-width: 30px;" onAction="#shuffle" GridPane.columnIndex="1"/>
+        </GridPane>
     </bottom>
 </BorderPane>
