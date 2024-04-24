@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 public class ControllerPuzzle {
     @FXML private GridPane matrice;
@@ -89,6 +93,20 @@ public class ControllerPuzzle {
                 matrice.add(button, col, row);
             }
         }
+
+        Platform.runLater(() -> {
+            Stage stage = (Stage) matrice.getScene().getWindow();
+            stage.setWidth(110*height);
+            stage.setHeight(150*width);
+
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+            double centerX = screenBounds.getMinX() + (screenBounds.getWidth() - stage.getWidth()) / 2;
+            double centerY = screenBounds.getMinY() + (screenBounds.getHeight() - stage.getHeight()) / 2;
+
+            stage.setX(centerX);
+            stage.setY(centerY);
+        });
+
         shuffle();
     }
     
