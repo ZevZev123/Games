@@ -334,4 +334,26 @@ public class MineController {
             System.out.println("ERRORE:\n" + e);
         }
     }
+
+    @FXML
+    private void showConfiguration(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("structure3.fxml"));
+        try {
+            Parent root = loader.load();
+        
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Leaderboard");
+            stage.setWidth(390);
+            stage.setHeight(500);
+            
+            stage.getIcons().add(new Image("file:src\\main\\resources\\images\\minesweeper.png"));
+            Scene scene = root.getScene();
+            scene.getStylesheets().add(getClass().getResource("style2.css").toExternalForm());
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("ERRORE:\n" + e);
+        }
+    }
+
 }
