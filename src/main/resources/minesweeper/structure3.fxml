@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="minesweeper.Leaderboard">
+    <center>
+        <GridPane alignment="center" hgap="5" vgap="5" style="-fx-padding: 10 0 10 0;">
+            <Label text="Columns" alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label text="Rows" alignment="center" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Label text="Bombs" alignment="center" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+
+            <TextField fx:id="col" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="row" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <TextField fx:id="bomb" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
+            <Button fx:id="button" alignment="center" text="Ok" onAction="#exit"/>
+        </GridPane>
+    </center>
+</BorderPane>

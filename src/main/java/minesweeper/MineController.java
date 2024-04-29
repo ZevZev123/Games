@@ -34,9 +34,11 @@ public class MineController {
     @FXML private GridPane mines;
     @FXML private Label flags;
 
-    private int maxRow = 20;
-    private int maxCol = 25;
-    private int numBomb = 90;
+    private MyInfo info = new MyInfo();
+
+    private int maxRow = info.getRow();
+    private int maxCol = info.getCol();
+    private int numBomb = info.getBomb();
     private int numOpen = 0;
     private Button[][] matrix = new Button[maxCol][maxRow];
     private boolean isGenerated = false;
@@ -78,7 +80,7 @@ public class MineController {
             }
         }
     }
-    
+
     @FXML
     private void leftButtonPressed(ActionEvent event){
         int[] position = getPosition((Button) event.getSource());
@@ -343,13 +345,13 @@ public class MineController {
         
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Leaderboard");
+            stage.setTitle("Menu");
             stage.setWidth(390);
             stage.setHeight(500);
             
             stage.getIcons().add(new Image("file:src\\main\\resources\\images\\minesweeper.png"));
             Scene scene = root.getScene();
-            scene.getStylesheets().add(getClass().getResource("style2.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("style3.css").toExternalForm());
             stage.show();
         } catch (IOException e) {
             System.out.println("ERRORE:\n" + e);
