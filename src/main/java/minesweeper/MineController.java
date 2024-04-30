@@ -191,8 +191,10 @@ public class MineController {
     private void showBombs(){
         for (Button[] list1 : matrix){
             for (Button button : list1){
-                if (button.getText() == "bomb"){
-                    button.getStyleClass().addAll("bomb");
+                if (button != null){
+                    if (button.getText() == "bomb"){
+                        button.getStyleClass().addAll("bomb");
+                    }
                 }
             }
         }
@@ -296,7 +298,9 @@ public class MineController {
     private void disableBlock(Boolean block){
         for (Button[] list: matrix){
             for (Button button: list){
-                button.setDisable(block);
+                if (button != null){
+                    button.setDisable(block);
+                }
             }
         }
     }
@@ -307,11 +311,13 @@ public class MineController {
         numOpen = 0;
         for (Button[] list: matrix){
             for (Button button: list){
-                button.getStyleClass().setAll("button-game", "button-locked");
-                button.setStyle("-fx-background-color: #aeaeae;");
-                button.setText("");
-                button.setDisable(false);
-                isGenerated = false;
+                if (button != null){
+                    button.getStyleClass().setAll("button-game", "button-locked");
+                    button.setStyle("-fx-background-color: #aeaeae;");
+                    button.setText("");
+                    button.setDisable(false);
+                    isGenerated = false;
+                }
             }
         }
     }
@@ -344,13 +350,14 @@ public class MineController {
             Parent root = loader.load();
             
             Configuration controller = loader.getController();
+            controller.setController(this);
             controller.setWindow(info);
-            
+
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Menu");
             stage.setWidth(390);
-            stage.setHeight(500);
+            stage.setHeight(400);
             
             stage.getIcons().add(new Image("file:src\\main\\resources\\images\\minesweeper.png"));
             Scene scene = root.getScene();
@@ -363,6 +370,19 @@ public class MineController {
 
     public void setInfo(MyInfo newInfo){
         info = newInfo;
-    }
+        for (int row = 0; row < maxRow; row++){
+            for (int col = 0; col < maxCol; col++){
+                mines.getChildren().remove(matrix[col][row]);
+                matrix[col][row] = null;
+            }
+        }
 
+        this.isGenerated = false;
+        this.numOpen = 0;
+
+        this.maxRow = info.getRow();
+        this.maxCol = info.getCol();
+        this.numBomb = info.getBomb();
+        initialize();
+    }
 }
