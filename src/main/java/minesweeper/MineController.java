@@ -361,4 +361,8 @@ public class MineController {
         }
     }
 
+    public void setInfo(MyInfo newInfo){
+        info = newInfo;
+    }
+
 }
