@@ -342,7 +342,10 @@ public class MineController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("structure3.fxml"));
         try {
             Parent root = loader.load();
-        
+            
+            Configuration controller = loader.getController();
+            controller.setWindow(info);
+            
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Menu");

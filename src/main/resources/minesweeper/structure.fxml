@@ -18,6 +18,7 @@
         <GridPane alignment="center" style="-fx-padding: 10 0 10 0;" hgap="5">
             <Button text="LeaderBoard" onAction="#showLeaderboard" GridPane.columnIndex="0"/>
             <Button text="Restart" onAction="#restartGame" GridPane.columnIndex="1"/>
+            <Button text="Configuration" onAction="#showConfiguration" GridPane.columnIndex="2"/>
         </GridPane>
     </bottom>
 </BorderPane>

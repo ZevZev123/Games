@@ -44,7 +44,7 @@ public class Leaderboard {
             time.styleProperty().set("-fx-alignment:center;");
 
             grid.setText(String.valueOf(myData.get(i).getCol()) + "x" + String.valueOf(myData.get(i).getRow()));
-            bombs.setText(String.valueOf(myData.get(i).getNumBomb()));
+            bombs.setText(String.valueOf(myData.get(i).getBomb()));
             time.setText(String.valueOf(myData.get(i).getTime()));
             
             gridpane.add(grid, 0, i);

@@ -3,7 +3,7 @@ package minesweeper;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class MyDataMine implements Comparable<MyDataMine> {
+public class MyDataMine extends MyInfo implements Comparable<MyDataMine> {
     private long time;
     private int col;
     private int row;
@@ -39,21 +39,6 @@ public class MyDataMine implements Comparable<MyDataMine> {
         this.time = newTime;
     }
 
-    public void setCol(int newCol){
-        this.col = newCol;
-        updateRatio();
-    }
-
-    public void setRow(int newRow){
-        this.row = newRow;
-        updateRatio();
-    }
-
-    public void setBomb(int newNumBomb){
-        this.numBomb = newNumBomb;
-        updateRatio();
-    }
-
     public void setRatio(float newRatio){
         this.ratio = newRatio;
         updateRatio();
@@ -65,18 +50,6 @@ public class MyDataMine implements Comparable<MyDataMine> {
 
     public long getTime(){
         return this.time;
-    }
-
-    public int getCol(){
-        return this.col;
-    }
-
-    public int getRow(){
-        return this.row;
-    }
-    
-    public int getNumBomb(){
-        return this.numBomb;
     }
     
     public float getRatio(){

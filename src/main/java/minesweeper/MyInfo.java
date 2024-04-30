@@ -40,4 +40,8 @@ public class MyInfo {
     public int getBomb(){
         return this.bomb;
     }
+
+    public String toString(){
+        return String.format("%d x %d, bombs: %d", this.row, this.col, this.bomb);
+    }
 }
