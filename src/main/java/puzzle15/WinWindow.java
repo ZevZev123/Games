@@ -42,7 +42,7 @@ public class WinWindow {
     }
 
     @FXML
-    private void test(){
+    private void exit(){
         Stage stage = (Stage) button.getScene().getWindow();
         stage.close();
     }

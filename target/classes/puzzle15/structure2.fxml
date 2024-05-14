@@ -8,7 +8,7 @@
       <GridPane fx:id="gridpane" alignment="center" hgap="5" vgap="5">
          <Label text="Moves" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
          <Label text="Total time" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-         <Button fx:id="button" styleClass="okbutton" text="Ok" onAction="#test" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+         <Button fx:id="button" styleClass="okbutton" text="Ok" onAction="#exit" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
       </GridPane>
    </center>
 </BorderPane>

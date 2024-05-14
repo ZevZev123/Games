@@ -124,13 +124,11 @@ public class Controller {
         for (int row = 0; row < 4; row++){
             for (int col = 0; col < 4; col++){
                 if (matrix[row][col].equals(button)){
-                    int[] position = {row, col};
-                    return position;
+                    return new int[] {row, col};
                 }
             }
         }
-        int[] position = {0,0};
-        return position;
+        return new int[] {0, 0};
     }
 
 
@@ -255,19 +253,15 @@ public class Controller {
         }
     }
 
-
-
     private int[] findEmpty(){
         for (int row = 0; row < 4; row++){
             for (int col = 0; col < 4; col++){
                 if (((Button) matrix[row][col]).getText() == ""){
-                    int[] position = {row, col};
-                    return position;
+                    return new int[] {row, col};
                 }
             }
         }
-        int[] position = {0, 0};
-        return position;
+        return new int[] {0, 0};
     }
 
     @FXML
