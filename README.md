@@ -3,6 +3,7 @@
 * minesweeper
 * tris
 * puzzle macchinette
+* memory
 * connect 4 gravitational tic tac toe
 * space invaders
 * tetris
